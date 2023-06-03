@@ -10,12 +10,19 @@ import com.utad.model.Vistas;
 
 import controlador.Controlador;
 import modelo.Modelo;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JButton;
 
 public class Vista extends JFrame implements Vistas {
 
 	private JPanel contentPane;
 	private Controlador miControlador;
 	private Modelo miModelo;
+	private JTable tabla;
+	private JScrollPane scrollPane;
+	private JButton btnMostrarTabla;
+	private JButton btnGuardar;
 
 	/**
 	 * Launch the application.
@@ -43,6 +50,22 @@ public class Vista extends JFrame implements Vistas {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setBounds(40, 20, 369, 165);
+		contentPane.add(scrollPane);
+		
+		tabla = new JTable();
+		scrollPane.setColumnHeaderView(tabla);
+		
+		btnMostrarTabla = new JButton("Mostrar Tabla");
+		btnMostrarTabla.setBounds(40, 226, 117, 29);
+		contentPane.add(btnMostrarTabla);
+		
+		btnGuardar = new JButton("Guardar");
+		btnGuardar.setBounds(292, 226, 117, 29);
+		contentPane.add(btnGuardar);
 	}
 
 	@Override
@@ -64,8 +87,4 @@ public class Vista extends JFrame implements Vistas {
 	public Modelo getMiModelo() {
 		return miModelo;
 	}
-
-
-	
-
 }
